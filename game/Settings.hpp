@@ -13,7 +13,7 @@ class Settings {
   sf::Time TIME_PER_FRAME;
   int windowStyle;
 
-  Settings(const sf::VideoMode &video_mode, int windowStyle = sf::Style::Default, const sf::Time &time_per_frame = sf::seconds(1.f / 60.f));
+  Settings(const sf::VideoMode &video_mode, int windowStyle = sf::Style::Default, const sf::Time &time_per_frame = sf::seconds(1.f / 40.f));
 };
 
 #endif//GUI_BUILDER_GAME_SETTINGS_HPP_

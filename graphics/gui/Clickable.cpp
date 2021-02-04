@@ -10,3 +10,8 @@ bool Clickable::isClickable() const {
 void Clickable::setOnClickListener(const std::function<void(Clickable *)> &on_click_listener) {
   onClickListener = on_click_listener;
 }
+void Clickable::onClick() {
+  if (onClickListener) {
+    onClickListener(this);
+  }
+}

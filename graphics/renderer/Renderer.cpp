@@ -20,3 +20,5 @@ void Renderer::render() {
 }
 void Renderer::processEvent(sf::Event event) {
 }
+void Renderer::update(const sf::Time &time) {
+}

@@ -19,6 +19,8 @@ void Graphics::render() {
 }
 
 void Graphics::update(const sf::Time &time) {
+  gui.update(time);
+  renderer.update(time);
 }
 
 void Graphics::processEvents() {

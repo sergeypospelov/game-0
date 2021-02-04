@@ -15,13 +15,9 @@ class Clickable : virtual public View {
   void setOnClickListener(const std::function<void(Clickable *)> &on_click_listener);
 
  public:
-  bool isClickable() const final;
+  bool isClickable() const final override;
 
-  void onClick() {
-    if (onClickListener) {
-      onClickListener(this);
-    }
-  }
+  void onClick();
 };
 
 #endif//GUI_BUILDER_GRAPHICS_GUI_CLICKABLE_HPP_

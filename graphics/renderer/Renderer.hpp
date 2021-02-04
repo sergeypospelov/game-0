@@ -18,6 +18,7 @@ class Renderer : sf::NonCopyable {
 
   void render();
   void processEvent(sf::Event event);
+  void update(const sf::Time &time);
 };
 
 #endif//GUI_BUILDER_GRAPHICS_RENDERER_RENDERER_HPP_

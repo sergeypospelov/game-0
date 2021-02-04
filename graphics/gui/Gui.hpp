@@ -7,14 +7,25 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <memory>
+
+#include "View.hpp"
+
 class Gui : sf::NonCopyable {
  private:
   sf::RenderWindow &window;
 
-  sf::View view;
+  sf::View wView;
+
+  std::vector<std::shared_ptr<View>> views;
+  std::vector<std::shared_ptr<View>> hoverableViews;
+  std::vector<std::shared_ptr<View>> focusableViews;
+  std::vector<std::shared_ptr<View>> clickableViews;
 
  public:
   Gui(sf::RenderWindow &window);
+
+  void addObject(const std::shared_ptr<View>& view);
 
   void render();
 };

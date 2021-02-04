@@ -3,16 +3,31 @@
 //
 
 #include "Gui.hpp"
+#include "TextView.hpp"
 
-Gui::Gui(sf::RenderWindow &window) : window(window), view(window.getDefaultView()) {
+Gui::Gui(sf::RenderWindow &window) : window(window), wView(window.getDefaultView()) {
+
+  addObject(std::make_shared<TextView>("Hello world!", 100, 100, sf::Color(255, 255, 255, 128), 120));
 }
 
 void Gui::render() {
-  window.setView(view);
-  sf::RectangleShape rect(view.getSize());
-  rect.setOutlineThickness(-10);
-  rect.setOutlineColor(sf::Color::Cyan);
-  rect.setFillColor(sf::Color(255, 255, 255, 0));
+  window.setView(wView);
 
-  window.draw(rect);
+  for (auto &v : views) {
+    window.draw(*v);
+  }
+}
+
+
+void Gui::addObject(const std::shared_ptr<View>& view) {
+  views.push_back(view);
+  if (view->isClickable()) {
+    clickableViews.push_back(view);
+  }
+  if (view->isHoverable()) {
+    hoverableViews.push_back(view);
+  }
+  if (view->isFocusable()) {
+    focusableViews.push_back(view);
+  }
 }

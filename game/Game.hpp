@@ -6,6 +6,7 @@
 #define GUI_BUILDER__GAME_HPP_
 
 #include <SFML/Graphics.hpp>
+
 #include <iostream>
 #include <memory>
 #include <vector>

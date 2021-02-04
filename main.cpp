@@ -50,7 +50,7 @@ class Box : public sf::Drawable, public Clickable {
 
 class Gui : public sf::Drawable {
   vector<shared_ptr<Box>> objects;
-  vector<shared_ptr<Box>> clickableObjects;
+  vector<shared_ptr<Box>> clickableViews;
   shared_ptr<Box> objectWithFocus = nullptr;
   shared_ptr<Box> objectDrag = nullptr;
   sf::Vector2i deltaMouse;
@@ -64,7 +64,7 @@ class Gui : public sf::Drawable {
   void addObject(const shared_ptr<Box> &object, bool isClickable = false) {
     objects.emplace_back(object);
     if (isClickable) {
-      clickableObjects.emplace_back(object);
+      clickableViews.emplace_back(object);
     }
   }
 
@@ -74,7 +74,7 @@ class Gui : public sf::Drawable {
       objectWithFocus->onFocusLost();
     }
     sf::Vector2f mouse_pos_coord = window.mapPixelToCoords(mouse_pos);
-    for (auto &object : clickableObjects) {
+    for (auto &object : clickableViews) {
       if (object->contains(mouse_pos_coord)) {
         object->onClick(mouse_pos);
         objectWithFocus = object;
@@ -92,7 +92,7 @@ class Gui : public sf::Drawable {
   }
 
   void mouseMoved(const sf::Vector2i &mouse_pos) {
-    sf::View view = window.getView();
+    sf::View wView = window.getView();
     static sf::Vector2f offset;
     if (mouse_pos.x > window.getSize().x * 0.9) {
       offset.x += 0.2;
@@ -121,8 +121,8 @@ class Gui : public sf::Drawable {
       offset.y = -10;
     }
 
-    view.move(offset);
-    window.setView(view);
+    wView.move(offset);
+    window.setView(wView);
 
     if (objectDrag != nullptr) {
       objectDrag->move(mouse_pos - deltaMouse);

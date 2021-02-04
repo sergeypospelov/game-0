@@ -9,6 +9,9 @@
 
 #include <memory>
 
+#include "Clickable.hpp"
+#include "Focusable.hpp"
+#include "Hoverable.hpp"
 #include "View.hpp"
 
 class Gui : sf::NonCopyable {
@@ -18,9 +21,9 @@ class Gui : sf::NonCopyable {
   sf::View wView;
 
   std::vector<std::shared_ptr<View>> views;
-  std::vector<std::shared_ptr<View>> hoverableViews;
-  std::vector<std::shared_ptr<View>> focusableViews;
-  std::vector<std::shared_ptr<View>> clickableViews;
+  std::vector<std::shared_ptr<Hoverable>> hoverableViews;
+  std::vector<std::shared_ptr<Focusable>> focusableViews;
+  std::vector<std::shared_ptr<Clickable>> clickableViews;
 
  public:
   Gui(sf::RenderWindow &window);
@@ -28,6 +31,8 @@ class Gui : sf::NonCopyable {
   void addObject(const std::shared_ptr<View>& view);
 
   void render();
+  void processEvent(sf::Event event);
+  void mouseButtonPressed(sf::Event::MouseButtonEvent event);
 };
 
 #endif//GUI_BUILDER_GRAPHICS_GUI_GUI_HPP_

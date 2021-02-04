@@ -1,0 +1,11 @@
+//
+// Created by pospelov on 04.02.2021.
+//
+
+#ifndef GUI_BUILDER_GRAPHICS_GUI_FOCUSABLE_HPP_
+#define GUI_BUILDER_GRAPHICS_GUI_FOCUSABLE_HPP_
+
+class Focusable {
+};
+
+#endif//GUI_BUILDER_GRAPHICS_GUI_FOCUSABLE_HPP_

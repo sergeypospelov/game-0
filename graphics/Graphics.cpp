@@ -28,6 +28,8 @@ void Graphics::processEvents() {
         Game::getInstance().addEvent([](Game &game) { game.stop(); });
         break;
       default:
+        renderer.processEvent(ev_);
+        gui.processEvent(ev_);
         break;
     }
   }

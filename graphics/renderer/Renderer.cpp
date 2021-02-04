@@ -7,6 +7,7 @@ Renderer::Renderer(sf::RenderWindow &window) : window(window), view(window.getDe
 }
 
 void Renderer::render() {
+/*
   window.setView(view);
   sf::RectangleShape rect(sf::Vector2f(200, 200));
   rect.setPosition(200, 200);
@@ -15,4 +16,7 @@ void Renderer::render() {
   rect.setFillColor(sf::Color(255, 255, 255, 128));
 
   window.draw(rect);
+*/
+}
+void Renderer::processEvent(sf::Event event) {
 }

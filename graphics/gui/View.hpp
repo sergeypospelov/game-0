@@ -23,6 +23,7 @@ class View : public sf::Drawable {
   virtual bool isClickable() const;
   virtual bool isHoverable() const;
   virtual bool isFocusable() const;
+  virtual bool contains(float x, float y) const = 0;
 
  public:
   virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override = 0;

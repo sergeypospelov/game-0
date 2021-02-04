@@ -11,11 +11,10 @@
 
 class TextView : virtual public View {
 
+ protected:
   sf::Font font;
-  std::string text;
 
-  int fontSize;
-  int x, y;
+  float x, y;
 
   sf::Text textHolder;
 
@@ -25,7 +24,17 @@ class TextView : virtual public View {
 
  public:
 
+  std::string getText() const {
+    return textHolder.getString();
+  }
+
+  void setText(const std::string &text) {
+    textHolder.setString(text);
+  }
+
   void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
+
+  bool contains(float posX, float posY) const override;
 };
 
 #endif//GUI_BUILDER_GRAPHICS_GUI_TEXTVIEW_HPP_

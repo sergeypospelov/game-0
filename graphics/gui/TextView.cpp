@@ -6,7 +6,7 @@
 
 #include "TextView.hpp"
 
-TextView::TextView(const std::string &text, float x, float y, const sf::Color &color, int fontSize) : text(text), x(x), y(y), fontSize(fontSize) {
+TextView::TextView(const std::string &text, float x, float y, const sf::Color &color, int fontSize) : x(x), y(y) {
 
   if (!font.loadFromFile("./resources/fonts/8bit.ttf")) {
     std::cerr << "Bad font!";
@@ -32,4 +32,7 @@ TextView::TextView(const std::string &text, int x, int y, sf::Color color, int f
 
 void TextView::draw(sf::RenderTarget &target, sf::RenderStates states) const {
   target.draw(textHolder, states);
+}
+bool TextView::contains(float posX, float posY) const {
+  return textHolder.getGlobalBounds().contains(posX, posY);
 }

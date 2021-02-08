@@ -7,7 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "game/Settings.hpp"
+#include "game/settings/Settings.hpp"
 
 struct Context {
   sf::RenderWindow &window;

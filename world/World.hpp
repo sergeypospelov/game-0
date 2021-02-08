@@ -6,7 +6,7 @@
 #define GUI_BUILDER_ENGINE_ENGINE_HPP_
 
 #include <SFML/System/Time.hpp>
-class Engine {
+class World {
  public:
   void update(const sf::Time time);
   void stop();

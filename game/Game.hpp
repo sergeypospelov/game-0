@@ -13,22 +13,17 @@
 #include <queue>
 #include <functional>
 
-
-#include "engine/Engine.hpp"
+#include "game/settings/Settings.hpp"
 #include "graphics/Graphics.hpp"
-#include "Settings.hpp"
-
-
+#include "world/World.hpp"
 
 class Game : sf::NonCopyable {
  private:
-  Engine engine;
+  World world;
   Graphics graphics;
   Settings settings;
 
   bool isRunning = false;
-
-
 
   std::queue<std::function<void(Game &)>> gameEventsQ;
   Game(const Settings &s);

@@ -21,7 +21,7 @@ void Game::run() {
       timeSinceLastUpdate -= TIME_PER_FRAME;
       graphics.processEvents();
       graphics.update(TIME_PER_FRAME);
-      engine.update(TIME_PER_FRAME);
+      world.update(TIME_PER_FRAME);
       processGameEvents();
     }
 

@@ -10,7 +10,6 @@
 #include <memory>
 
 #include "Clickable.hpp"
-#include "Focusable.hpp"
 #include "Hoverable.hpp"
 #include "View.hpp"
 

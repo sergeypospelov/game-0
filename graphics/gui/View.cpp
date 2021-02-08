@@ -6,9 +6,7 @@
 
 #include "View.hpp"
 
-bool View::isFocusable() const {
-  return false;
-}
+
 bool View::isVisible() const {
   return visible;
 }

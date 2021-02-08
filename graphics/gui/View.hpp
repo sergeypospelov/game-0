@@ -22,7 +22,6 @@ class View : public sf::Drawable {
   void setVisible(bool visible);
   virtual bool isClickable() const;
   virtual bool isHoverable() const;
-  virtual bool isFocusable() const;
   virtual bool contains(float x, float y) const = 0;
 
  public:

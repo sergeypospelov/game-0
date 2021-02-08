@@ -16,7 +16,7 @@ class Button : public TextView, public Clickable, public Hoverable {
  public:
   Button(const std::string &text = "",
          sf::FloatRect rect = sf::FloatRect(0, 0, 200, 100),
-         sf::Color bColor = sf::Color(255, 255, 255, 64),
+         sf::Color bColor = sf::Color(128, 128, 128, 128),
          sf::Color tColor = sf::Color::White,
          int fontSize = 40,
          TextView::Font fontType = TextView::Font::Bit)
@@ -25,6 +25,17 @@ class Button : public TextView, public Clickable, public Hoverable {
     box.setSize(sf::Vector2f(rect.width, rect.height));
     TextView::setCenter(box.getPosition().x + box.getSize().x / 2, box.getPosition().y + box.getSize().y / 2);
     box.setFillColor(bColor);
+
+    setOnHoverChangeListener([this] (Hoverable *h, bool hover) {
+      sf::Color color = this->getBoxColor();
+      if (hover) {
+        color.a = 64;
+        this->setBoxColor(color);
+      } else {
+        color.a = 128;
+        this->setBoxColor(color);
+      }
+    } );
   }
   bool contains(float x, float y) const override {
     return box.getGlobalBounds().contains(x, y);
@@ -32,6 +43,10 @@ class Button : public TextView, public Clickable, public Hoverable {
 
   void setBoxColor(sf::Color color) {
     box.setFillColor(color);
+  }
+
+  sf::Color getBoxColor() const {
+    return box.getFillColor();
   }
 
   void draw(sf::RenderTarget &target, sf::RenderStates states) const override {

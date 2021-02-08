@@ -19,40 +19,15 @@ class Button : public TextView, public Clickable, public Hoverable {
          sf::Color bColor = sf::Color(128, 128, 128, 128),
          sf::Color tColor = sf::Color::White,
          int fontSize = 40,
-         TextView::Font fontType = TextView::Font::Bit)
-      : TextView(text, 0, 0, fontSize, tColor, fontType) {
-    box.setPosition(rect.left, rect.top);
-    box.setSize(sf::Vector2f(rect.width, rect.height));
-    TextView::setCenter(box.getPosition().x + box.getSize().x / 2, box.getPosition().y + box.getSize().y / 2);
-    box.setFillColor(bColor);
+         TextView::Font fontType = TextView::Font::Bit);
 
-    setOnHoverChangeListener([this] (Hoverable *h, bool hover) {
-      sf::Color color = this->getBoxColor();
-      if (hover) {
-        color.a = 64;
-        this->setBoxColor(color);
-      } else {
-        color.a = 128;
-        this->setBoxColor(color);
-      }
-    } );
-  }
-  bool contains(float x, float y) const override {
-    return box.getGlobalBounds().contains(x, y);
-  }
+  bool contains(float x, float y) const override;
 
-  void setBoxColor(sf::Color color) {
-    box.setFillColor(color);
-  }
+  void setBoxColor(sf::Color color);
 
-  sf::Color getBoxColor() const {
-    return box.getFillColor();
-  }
+  sf::Color getBoxColor() const;
 
-  void draw(sf::RenderTarget &target, sf::RenderStates states) const override {
-    target.draw(box, states);
-    TextView::draw(target, states);
-  }
+  void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
 };
 
 #endif//GUI_BUILDER_GRAPHICS_GUI_VIEWS_BUTTON_HPP_

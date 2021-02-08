@@ -11,25 +11,16 @@
 Gui::Gui(sf::RenderWindow &window) : window(window), wView(window.getDefaultView()) {
 
   auto text = std::make_shared<TextView>("AFK Button is not pressed!");
-  text->setCenter(300, 100);
+  text->setCenter(960, 100);
 
 
   addObject(text);
 
+  auto button1 = std::make_shared<Button>("Press me!", sf::FloatRect(0, 0, 300, 70));
+  auto button2 = std::make_shared<Button>("Press me too!", sf::FloatRect(0, 70, 300, 70));
 
-
-
-  auto button = std::make_shared<Button>("Press me!", sf::FloatRect(0, 0, 300, 70));
-  button->setOnClickListener([text](Clickable *) { text->setText("Pressed!"); });
-  button->setOnHoverChangeListener([button](Hoverable *view, bool hover) {
-    if (hover) {
-      button->setBoxColor(sf::Color(255, 255, 255, 32));
-    } else {
-      button->setBoxColor(sf::Color(255, 255, 255, 64));
-    }
-  });
-
-  addObject(button);
+  addObject(button1);
+  addObject(button2);
 }
 
 void Gui::render() {

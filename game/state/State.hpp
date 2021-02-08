@@ -10,11 +10,11 @@
 
 #include "game/context/Context.hpp"
 
-#include "StatesIdentifiers.hpp"
+#include "states/StatesIdentifiers.hpp"
 
 class StateStack;
 
-class State : sf::Drawable {
+class State {
  public:
   typedef std::shared_ptr<State> Ptr;
 
@@ -25,13 +25,23 @@ class State : sf::Drawable {
  public:
   State(StateStack &stack, Context context) : stack(stack), context(context) {};
 
+  /*
+   *  returns false if another states don't need to update,
+   *  otherwise returns true
+   */
   virtual bool update(sf::Time dt) = 0;
+  /*
+   *  returns false if another states don't need to handle event,
+   *  otherwise returns true
+   */
   virtual bool handleEvent(const sf::Event &event) = 0;
+  virtual void render() = 0;
 
  protected:
   void requestStackPush(States::ID stateID);
   void requestStackClear();
   void requestStackPop();
+  Context getContext();;
 };
 
 #endif//GUI_BUILDER_GAME_STATE_HPP_

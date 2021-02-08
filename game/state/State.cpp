@@ -16,3 +16,6 @@ void State::requestStackPop() {
 void State::requestStackClear() {
   stack.clearStates();
 }
+Context State::getContext() {
+  return context;
+}

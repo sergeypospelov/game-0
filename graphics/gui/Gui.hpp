@@ -14,7 +14,7 @@
 #include "View.hpp"
 
 class Gui : sf::NonCopyable {
- private:
+ protected:
   sf::RenderWindow &window;
 
   sf::View wView;
@@ -22,7 +22,6 @@ class Gui : sf::NonCopyable {
   std::vector<std::shared_ptr<View>> views;
   std::vector<std::shared_ptr<Hoverable>> hoverableViews;
   std::shared_ptr<Hoverable> hoverOnView = nullptr;
-  std::vector<std::shared_ptr<Focusable>> focusableViews;
   std::vector<std::shared_ptr<Clickable>> clickableViews;
 
   void updateHover();
@@ -30,12 +29,12 @@ class Gui : sf::NonCopyable {
   void mouseButtonMoved(sf::Event::MouseMoveEvent event);
 
  public:
-  Gui(sf::RenderWindow &window);
+  explicit Gui(sf::RenderWindow &window);
 
   void addObject(const std::shared_ptr<View>& view);
 
   void render();
-  void processEvent(sf::Event event);
+  void handleEvent(sf::Event event);
   void update(const sf::Time &time);
 };
 

@@ -19,3 +19,4 @@ bool View::isClickable() const {
 bool View::isHoverable() const {
   return false;
 }
+View::View(Context context) : context(context) {}

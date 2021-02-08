@@ -8,12 +8,7 @@ State::Ptr StateStack::createState(States::ID stateID) {
   assert(state); // state constructor in lambda
   return state();
 }
-template<typename T>
-void StateStack::registerState(States::ID stateID) {
-  factories[stateID] = [this] () {
-    return std::make_shared<T>(*this, context);
-  };
-}
+
 void StateStack::update(sf::Time dt) {
   for (auto itr = stack.rbegin(); itr != stack.rend(); itr++) {
     if (!itr->get()->update(dt)) {
@@ -62,3 +57,9 @@ void StateStack::applyPendingChanges() {
   pendingList.clear();
 }
 StateStack::StateStack(Context context) : context(context) {}
+
+void StateStack::render() const {
+  for (auto it : stack) {
+    it->render();
+  }
+}

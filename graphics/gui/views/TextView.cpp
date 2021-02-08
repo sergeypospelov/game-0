@@ -6,20 +6,10 @@
 
 #include "TextView.hpp"
 
-const std::string TextView::fontFile[] = {
-  "8bit.ttf",
-  "Cartoon.ttf",
-  "Courier.ttf",
-  "Libre.ttf",
-  "Tower.ttf"
-};
 
-TextView::TextView(const std::string &text, float x, float y, int fontSize, const sf::Color &color, const Font fontType) : x(x), y(y) {
-  if (!font.loadFromFile("./resources/fonts/" + fontFile[fontType])) {
-    std::cerr << "Can't load font!";
-  }
 
-  textHolder.setFont(font);
+TextView::TextView(Context context, const std::string &text, float x, float y, int fontSize, const sf::Color &color, const Resources::Font fontType) : View(context), x(x), y(y) {
+  textHolder.setFont(context.resources.getFont(fontType));
   textHolder.setString(text);
   setCenter(x, y);
   textHolder.setFillColor(color);
@@ -45,8 +35,12 @@ void TextView::setFontSize(int size) {
 void TextView::setCenter(float x_, float y_) {
   x = x_;
   y = y_;
+
   textHolder.setPosition(x - textHolder.getLocalBounds().width / 2 - textHolder.getLocalBounds().left, y - textHolder.getLocalBounds().height / 2 - textHolder.getLocalBounds().top);
 }
 void TextView::setColor(const sf::Color &color) {
   textHolder.setFillColor(color);
+}
+sf::Color TextView::getColor() const {
+  return textHolder.getFillColor();
 }

@@ -12,9 +12,9 @@
 #include <cassert>
 
 #include "State.hpp"
-#include "StatesIdentifiers.hpp"
+#include "states/StatesIdentifiers.hpp"
 
-class StateStack : sf::NonCopyable, public sf::Drawable {
+class StateStack : sf::NonCopyable {
  public:
   enum Action {
     Push,
@@ -27,7 +27,11 @@ class StateStack : sf::NonCopyable, public sf::Drawable {
   explicit StateStack(Context context);
 
   template <typename T>
-  void registerState(States::ID stateID);
+  void registerState(States::ID stateID)  {
+    factories[stateID] = [this] () {
+      return std::make_shared<T>(*this, context);
+    };
+  }
 
   void update(sf::Time dt);
 
@@ -41,6 +45,8 @@ class StateStack : sf::NonCopyable, public sf::Drawable {
   bool isEmpty() const;
 
   Context getContext() const;
+
+  void render() const;
 
  private:
 

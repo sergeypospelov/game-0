@@ -14,12 +14,12 @@ class Button : public TextView, public Clickable, public Hoverable {
   sf::RectangleShape box;
 
  public:
-  Button(const std::string &text = "",
+  explicit Button(Context context, const std::string &text = "",
          sf::FloatRect rect = sf::FloatRect(0, 0, 200, 100),
          sf::Color bColor = sf::Color(128, 128, 128, 128),
          sf::Color tColor = sf::Color::White,
          int fontSize = 40,
-         TextView::Font fontType = TextView::Font::Bit);
+         Resources::Font fontType = Resources::Font::Bit);
 
   bool contains(float x, float y) const override;
 

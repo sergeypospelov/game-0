@@ -10,28 +10,13 @@
 #include "graphics/gui/View.hpp"
 
 class TextView : virtual public View {
-
  protected:
   sf::Font font;
   float x, y;
   sf::Text textHolder;
 
- private:
-  static const std::string fontFile[];
-
  public:
-  enum Font {
-    Bit = 0,
-    Cartoon = 1,
-    Courier = 2,
-    Libre = 3,
-    Tower = 4
-  };
-
-  TextView(const std::string &text = "", float x = 0, float y = 0, int font_size = 40, const sf::Color &color = sf::Color::White, Font font_type = Font::Bit);
-
-
- public:
+  explicit TextView(Context context, const std::string &text = "", float x = 0, float y = 0, int font_size = 40, const sf::Color &color = sf::Color::White, Resources::Font font_type = Resources::Font::Bit);
 
   std::string getText() const;
 
@@ -40,6 +25,8 @@ class TextView : virtual public View {
   void setFontSize(int size);
 
   void setColor(const sf::Color &color);
+
+  sf::Color getColor() const;;
 
   void setCenter(float x_, float y_);
 

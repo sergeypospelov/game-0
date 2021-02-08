@@ -8,7 +8,8 @@
 class States {
  public:
   enum ID {
-    Flex
+    Menu,
+    Title
   };
 };
 

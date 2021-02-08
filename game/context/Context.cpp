@@ -3,4 +3,6 @@
 //
 
 #include "Context.hpp"
-Context::Context(sf::RenderWindow &window, std::vector<sf::Font> &fonts, std::vector<sf::Texture> &texture, Settings &settings) : window(window), fonts(fonts), texture(texture), settings(settings) {}
+Context::Context(sf::RenderWindow &window,
+                 Resources &resources,
+                 Settings &settings) : window(window), resources(resources), settings(settings) {}

@@ -1,10 +1,11 @@
 //
 // Created by pospelov on 04.02.2021.
 //
+#include <iostream>
 
 #include "Button.hpp"
-Button::Button(const std::string &text, sf::FloatRect rect, sf::Color bColor, sf::Color tColor, int fontSize, TextView::Font fontType)
-  : TextView(text, 0, 0, fontSize, tColor, fontType) {
+Button::Button(Context context, const std::string &text, sf::FloatRect rect, sf::Color bColor, sf::Color tColor, int fontSize, Resources::Font fontType)
+  : View(context), TextView(context, text, 0, 0, fontSize, tColor, fontType) {
   box.setPosition(rect.left, rect.top);
   box.setSize(sf::Vector2f(rect.width, rect.height));
   TextView::setCenter(box.getPosition().x + box.getSize().x / 2, box.getPosition().y + box.getSize().y / 2);
@@ -13,10 +14,10 @@ Button::Button(const std::string &text, sf::FloatRect rect, sf::Color bColor, sf
   setOnHoverChangeListener([this] (Hoverable *h, bool hover) {
     sf::Color color = this->getBoxColor();
     if (hover) {
-      color.a = 64;
+      color.a = 128;
       this->setBoxColor(color);
     } else {
-      color.a = 128;
+      color.a = 255;
       this->setBoxColor(color);
     }
   } );

@@ -15,7 +15,7 @@ class Clickable : virtual public View {
   void setOnClickListener(const std::function<void(Clickable *)> &on_click_listener);
 
  public:
-  bool isClickable() const final override;
+  bool isClickable() const final;
 
   void onClick();
 };

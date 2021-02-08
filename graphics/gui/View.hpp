@@ -9,6 +9,8 @@
 
 #include <memory>
 
+#include "game/context/Context.hpp"
+
 /*
  * Simple wView class.
  */
@@ -16,7 +18,11 @@
 class View : public sf::Drawable {
   bool visible = true;
 
+ protected:
+  Context context;
+
  public:
+  View(Context context);;
 
   bool isVisible() const;
   void setVisible(bool visible);

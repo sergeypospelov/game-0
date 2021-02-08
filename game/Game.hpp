@@ -7,40 +7,46 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <functional>
 #include <iostream>
 #include <memory>
-#include <vector>
 #include <queue>
-#include <functional>
+#include <vector>
 
-#include "game/settings/Settings.hpp"
-#include "graphics/Graphics.hpp"
+#include "state/StateStack.hpp"
+#include "settings/Settings.hpp"
 #include "world/World.hpp"
 
 class Game : sf::NonCopyable {
  private:
-  World world;
-  Graphics graphics;
   Settings settings;
+  Resources resources;
+  sf::RenderWindow window;
 
-  bool isRunning = false;
+  /*
+   * Variable for common values.
+   */
+  Context context;
+
+  StateStack stateStack;
 
   std::queue<std::function<void(Game &)>> gameEventsQ;
-  Game(const Settings &s);
-
   static Game *instance;
+
+ private:
+  explicit Game(Settings s);
+
+  void registerStates();
 
  public:
 
-  static Game &initInstance(const Settings &s);
+  static Game &initInstance(Settings s);
 
   static Game &getInstance();
 
   static void destroy(); // deletes instance
 
-  void addEvent(const std::function<void(Game &)> &f) {
-    gameEventsQ.push(f);
-  }
+  void addEvent(const std::function<void(Game &)> &f);
 
   void processGameEvents();
 

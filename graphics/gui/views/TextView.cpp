@@ -45,7 +45,8 @@ void TextView::setFontSize(int size) {
 void TextView::setCenter(float x_, float y_) {
   x = x_;
   y = y_;
-  textHolder.setPosition(x - textHolder.getLocalBounds().width / 2, y - textHolder.getLocalBounds().height / 2);
+  const sf::FloatRect &kRect = textHolder.getLocalBounds();
+  textHolder.setPosition(x - kRect.width / 2 - kRect.left, y - kRect.height / 2 - kRect.top);
 }
 void TextView::setColor(const sf::Color &color) {
   textHolder.setFillColor(color);

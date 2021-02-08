@@ -5,6 +5,7 @@
 #include "Gui.hpp"
 #include "Clickable.hpp"
 #include "views/TextView.hpp"
+#include <graphics/gui/views/Button.hpp>
 #include <iostream>
 
 Gui::Gui(sf::RenderWindow &window) : window(window), wView(window.getDefaultView()) {
@@ -15,33 +16,16 @@ Gui::Gui(sf::RenderWindow &window) : window(window), wView(window.getDefaultView
 
   addObject(text);
 
-  class Button : public TextView, public Clickable, public Hoverable {
-    const float offset = 20;
-   public:
-    Button(const std::string &text, float x, float y, sf::Color color, int font_size) : TextView(text, x, y, font_size, color,  TextView::Font::Tower) {
-      box.setSize(sf::Vector2f(textHolder.getGlobalBounds().width + 2 * offset, textHolder.getGlobalBounds().height + 2 * offset));
-      box.setPosition(textHolder.getGlobalBounds().left - offset, textHolder.getGlobalBounds().top - offset);
-      box.setFillColor(sf::Color(255, 255, 255, 64));
-
-    }
-    bool contains(float x, float y) const override {
-      return box.getGlobalBounds().contains(x, y);
-    }
-    void draw(sf::RenderTarget &target, sf::RenderStates states) const override {
-      target.draw(box, states);
-      TextView::draw(target, states);
-    }
-    sf::RectangleShape box;
-  };
 
 
-  auto button = std::make_shared<Button>("Press me!", 100, 300, sf::Color(255, 255, 255, 255), 100);
+
+  auto button = std::make_shared<Button>("Press me!", sf::FloatRect(0, 0, 300, 70));
   button->setOnClickListener([text](Clickable *) { text->setText("Pressed!"); });
   button->setOnHoverChangeListener([button](Hoverable *view, bool hover) {
     if (hover) {
-      button->box.setFillColor(sf::Color(255, 255, 255, 32));
+      button->setBoxColor(sf::Color(255, 255, 255, 32));
     } else {
-      button->box.setFillColor(sf::Color(255, 255, 255, 64));
+      button->setBoxColor(sf::Color(255, 255, 255, 64));
     }
   });
 

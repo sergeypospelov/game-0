@@ -28,7 +28,7 @@ class TextView : virtual public View {
     Tower = 4
   };
 
-  TextView(const std::string &text = "", float x = 0, float y = 0, int font_size = 20, const sf::Color &color = sf::Color::White, Font font_type = Font::Bit);
+  TextView(const std::string &text = "", float x = 0, float y = 0, int font_size = 40, const sf::Color &color = sf::Color::White, Font font_type = Font::Bit);
 
 
  public:

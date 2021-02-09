@@ -7,8 +7,6 @@
 #include "states/Title/TitleState.hpp"
 #include "states/Menu/MenuState.hpp"
 
-Game *Game::instance = nullptr;
-
 Game::Game(Settings s) : settings(s),
                          window(settings.videoMode, "Game", s.windowStyle),
                          resources(),
@@ -57,20 +55,6 @@ void Game::processGameEvents() {
 
 void Game::stop() {
   stateStack.clearStates();
-}
-
-void Game::destroy() {
-  instance->stop();
-  delete instance;
-}
-
-Game &Game::getInstance() {// returns instance
-  return *instance;
-}
-
-Game &Game::initInstance(Settings s) {// creates instance
-  instance = new Game(s);
-  return *instance;
 }
 
 void Game::addEvent(const std::function<void(Game &)> &f) {

@@ -15,7 +15,7 @@ bool MenuState::update(sf::Time dt) {
 bool MenuState::handleEvent(const sf::Event &event) {
   switch (event.type) {
     case sf::Event::EventType::Closed:
-      Game::getInstance().addEvent([](Game &g) { g.stop(); });
+      requestStackClear();
       break;
     default:
       break;

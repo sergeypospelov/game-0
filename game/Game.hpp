@@ -31,10 +31,8 @@ class Game : sf::NonCopyable {
   StateStack stateStack;
 
   std::queue<std::function<void(Game &)>> gameEventsQ;
-  static Game *instance;
 
  private:
-  explicit Game(Settings s);
 
   void registerStates();
 
@@ -42,11 +40,7 @@ class Game : sf::NonCopyable {
 
  public:
 
-  static Game &initInstance(Settings s);
-
-  static Game &getInstance();
-
-  static void destroy(); // deletes instance
+  explicit Game(Settings s);
 
   void addEvent(const std::function<void(Game &)> &f);
 

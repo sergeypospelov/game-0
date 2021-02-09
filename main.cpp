@@ -4,7 +4,6 @@
 
 int main() {
   Settings s(sf::VideoMode::getDesktopMode(), sf::Style::Fullscreen);
-  Game::initInstance(s);
-  Game::getInstance().run();
-  Game::destroy();
+  Game game(s);
+  game.run();
 }

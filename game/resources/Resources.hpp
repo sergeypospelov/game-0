@@ -19,13 +19,14 @@ class Resources : sf::NonCopyable {
     Tower = 4
   };
   enum Texture {
-
+    TitleScreen
   };
   struct Colors {
     const static sf::Color Orange200;
     const static sf::Color Indigo300;
     const static sf::Color LightGreen50;
     const static sf::Color Cyan50;
+    const static sf::Color Cyan500;
   };
 
  private:

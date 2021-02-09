@@ -14,6 +14,8 @@ class TitleState : public State {
   sf::Time curTime;
   const sf::Time fullTime = sf::seconds(2);
 
+  sf::Sprite background;
+
   TextView textView = TextView(getContext(), text, 400, 200, 80);
  public:
   TitleState(StateStack &stack, const Context &context);

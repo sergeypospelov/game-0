@@ -30,9 +30,9 @@ void MenuState::render() {
 }
 
 MenuState::MenuState(StateStack &stack, const Context &context) : State(stack, context), gui(context.window) {
-  auto title = std::make_shared<TextView>(context, "Game!", 200, 50, 120, Resources::Colors::Indigo300, Resources::Font::Tower);
-  auto buttonPlay = std::make_shared<Button>(context, "Play", sf::FloatRect(200, 200, 300, 80), Resources::Colors::Cyan50, sf::Color::White, 60,Resources::Font::Bit);
-  auto buttonExit = std::make_shared<Button>(context, "Exit", sf::FloatRect(200, 300, 300, 80), Resources::Colors::Cyan50, sf::Color::White, 60,Resources::Font::Bit);
+  auto title = std::make_shared<TextView>(context, "Game!", 250, 50, 120, Resources::Colors::Indigo300, Resources::Font::Tower);
+  auto buttonPlay = std::make_shared<Button>(context, "Play", sf::FloatRect(200, 200, 300, 80), Resources::Colors::Cyan500, sf::Color::White, 60,Resources::Font::Bit);
+  auto buttonExit = std::make_shared<Button>(context, "Exit", sf::FloatRect(200, 300, 300, 80), Resources::Colors::Cyan500, sf::Color::White, 60,Resources::Font::Bit);
 
   gui.addObject(title);
   gui.addObject(buttonPlay);

@@ -28,6 +28,9 @@ bool TitleState::handleEvent(const sf::Event &event) {
   return true;
 }
 void TitleState::render() {
+  getContext().window.draw(background);
   getContext().window.draw(textView);
 }
-TitleState::TitleState(StateStack &stack, const Context &context) : State(stack, context) {}
+TitleState::TitleState(StateStack &stack, const Context &context) : State(stack, context) {
+  background.setTexture(context.resources.getTextures(Resources::Texture::TitleScreen));
+}

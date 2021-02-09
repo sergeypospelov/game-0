@@ -9,6 +9,7 @@ const sf::Color Resources::Colors::Orange200 = sf::Color(0xFFCC80FF);
 const sf::Color Resources::Colors::Indigo300 = sf::Color(0x7986CBFF);
 const sf::Color Resources::Colors::LightGreen50 = sf::Color(0xF1F8E900);
 const sf::Color Resources::Colors::Cyan50 = sf::Color(0xE0F7FAFF);
+const sf::Color Resources::Colors::Cyan500 = sf::Color(0x00BCD4FF);
 
 Resources::Resources() {
   load_fonts();
@@ -34,5 +35,11 @@ void Resources::load_fonts() {
   }
 }
 void Resources::load_textures() {
-  //TODO();
+  const static std::vector<std::string> fileNames = {
+    "screens/title.jpg",
+  };
+  textures.resize(fileNames.size());
+  for (int i = 0; i < textures.size(); i++) {
+    textures[i].loadFromFile("./resources/textures/" + fileNames[i]);
+  }
 }

@@ -38,6 +38,8 @@ class Game : sf::NonCopyable {
 
   void registerStates();
 
+  void setGameIcon();
+
  public:
 
   static Game &initInstance(Settings s);
@@ -53,6 +55,7 @@ class Game : sf::NonCopyable {
   void stop();
 
   void run();
+
 };
 
 #endif//GUI_BUILDER__GAME_HPP_

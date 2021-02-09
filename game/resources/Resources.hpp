@@ -33,6 +33,8 @@ class Resources : sf::NonCopyable {
   std::vector<sf::Font> fonts;
   std::vector<sf::Texture> textures;
 
+  sf::Image gameIcon;
+
 
  public:
 
@@ -41,11 +43,13 @@ class Resources : sf::NonCopyable {
   const sf::Font &getFont(Font font) const;
   const sf::Texture &getTextures(Texture texture) const;
 
+  const sf::Image &getGameIcon() const;
+
 
  private:
-  void load_fonts();
-
-  void load_textures();
+  void loadFonts();
+  void loadTextures();
+  void loadIcon();
 };
 
 #endif//GUI_BUILDER_GAME_RESOURCES_RESOURCES_HPP_

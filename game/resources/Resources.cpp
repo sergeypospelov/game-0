@@ -12,8 +12,9 @@ const sf::Color Resources::Colors::Cyan50 = sf::Color(0xE0F7FAFF);
 const sf::Color Resources::Colors::Cyan500 = sf::Color(0x00BCD4FF);
 
 Resources::Resources() {
-  load_fonts();
-  load_textures();
+  loadFonts();
+  loadTextures();
+  loadIcon();
 }
 const sf::Font &Resources::getFont(Font font) const {
   return fonts[font];
@@ -21,7 +22,7 @@ const sf::Font &Resources::getFont(Font font) const {
 const sf::Texture &Resources::getTextures(Texture texture) const {
   return textures[texture];
 }
-void Resources::load_fonts() {
+void Resources::loadFonts() {
   const static std::vector<std::string> fileNames = {
     "8bit.ttf",
     "Cartoon.ttf",
@@ -34,7 +35,7 @@ void Resources::load_fonts() {
     fonts[i].loadFromFile("./resources/fonts/" + fileNames[i]);
   }
 }
-void Resources::load_textures() {
+void Resources::loadTextures() {
   const static std::vector<std::string> fileNames = {
     "screens/title.jpg",
   };
@@ -42,4 +43,12 @@ void Resources::load_textures() {
   for (int i = 0; i < textures.size(); i++) {
     textures[i].loadFromFile("./resources/textures/" + fileNames[i]);
   }
+}
+
+void Resources::loadIcon() {
+  gameIcon.loadFromFile("./resources/textures/icons/bacteria.png");
+}
+
+const sf::Image &Resources::getGameIcon() const {
+  return gameIcon;
 }

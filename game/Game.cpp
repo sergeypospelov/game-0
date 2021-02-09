@@ -14,6 +14,7 @@ Game::Game(Settings s) : settings(s),
                          resources(),
                          context(window, resources, settings),
                          stateStack(context) {
+  setGameIcon();
   registerStates();
 }
 
@@ -79,4 +80,8 @@ void Game::addEvent(const std::function<void(Game &)> &f) {
 void Game::registerStates() {
   stateStack.registerState<MenuState>(States::Menu);
   stateStack.registerState<TitleState>(States::Title);
+}
+void Game::setGameIcon() {
+  const sf::Image &icon = resources.getGameIcon();
+  window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
